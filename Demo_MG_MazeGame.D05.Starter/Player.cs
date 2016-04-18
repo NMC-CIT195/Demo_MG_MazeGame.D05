@@ -10,28 +10,36 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Demo_MG_MazeGame
 {
-    public class DeathBall
+    public class Player
     {
         #region ENUMS
+
+        public enum Direction
+        {
+            Left,
+            Right,
+            Up,
+            Down
+        }
 
         #endregion
 
         #region FIELDS
 
         private ContentManager _contentManager;
-        private Texture2D _sprite;
+        private Texture2D _spriteRight;
+        private Texture2D _spriteLeft;
+        private Texture2D _spriteUp;
+        private Texture2D _spriteDown;
         private int _spriteWidth;
         private int _spriteHeight;
         private Vector2 _position;
-        private Vector2 _startingPosition;
-        private Vector2 _endingPosition;
-        private bool _loop;
         private Vector2 _center;
         private int _speedHorizontal;
         private int _speedVertical;
+        private Direction _DirectionOfTravel;
         private Rectangle _boundingRectangle;
         private bool _active;
-        private float rotation;
 
         #endregion
 
@@ -54,24 +62,6 @@ namespace Demo_MG_MazeGame
             }
         }
 
-        public bool Loop
-        {
-            get { return _loop; }
-            set { _loop = value; }
-        }
-
-        public Vector2 EndingPosition
-        {
-            get { return _endingPosition; }
-            set { _endingPosition = value; }
-        }
-
-        public Vector2 StartingPositiion
-        {
-            get { return _startingPosition; }
-            set { _startingPosition = value; }
-        }
-
         public Vector2 Center
         {
             get { return _center; }
@@ -88,6 +78,12 @@ namespace Demo_MG_MazeGame
         {
             get { return _speedVertical; }
             set { _speedVertical = value; }
+        }
+
+        public Direction PlayerDirection
+        {
+            get { return _DirectionOfTravel; }
+            set { _DirectionOfTravel = value; }
         }
 
         public Rectangle BoundingRectangle
@@ -107,30 +103,31 @@ namespace Demo_MG_MazeGame
         #region CONSTRUCTORS
 
         /// <summary>
-        /// instantiate a new DeathBall object
+        /// instantiate a new Player
         /// </summary>
         /// <param name="contentManager">game content manager object</param>
         /// <param name="spriteName">file name of sprite</param>
         /// <param name="position">vector position of Player</param>
-        public DeathBall(
+        public Player(
             ContentManager contentManager,
-            string spriteName,
-            Vector2 startingPosition
+            Vector2 position
             )
         {
             _contentManager = contentManager;
-            _startingPosition = startingPosition;
-            _position = startingPosition;
+            _position = position;
 
             // load the Player images in for the different directions
-            _sprite = _contentManager.Load<Texture2D>("death_ball");
+            _spriteLeft = _contentManager.Load<Texture2D>("player_left");
+            _spriteRight = _contentManager.Load<Texture2D>("player_right");
+            _spriteUp = _contentManager.Load<Texture2D>("player_Up");
+            _spriteDown = _contentManager.Load<Texture2D>("player_Down");
 
-            _spriteWidth = _sprite.Width;
-            _spriteHeight = _sprite.Height;
+            _spriteWidth = _spriteLeft.Width;
+            _spriteHeight = _spriteLeft.Height;
 
             // set the initial center and bounding rectangle for the player
-            _center = new Vector2(startingPosition.X + (_spriteWidth / 2), startingPosition.Y + (_spriteHeight / 2));
-            _boundingRectangle = new Rectangle((int)startingPosition.X, (int)startingPosition.Y, _spriteWidth, _spriteHeight);
+            _center = new Vector2(position.X + (_spriteWidth / 2), position.Y + (_spriteHeight / 2));
+            _boundingRectangle = new Rectangle((int)position.X, (int)position.Y, _spriteWidth, _spriteHeight);
         }
 
         #endregion
@@ -138,7 +135,7 @@ namespace Demo_MG_MazeGame
         #region METHODS
 
         /// <summary>
-        /// draw death ball
+        /// add Player sprite to the SpriteBatch object
         /// </summary>
         /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
@@ -146,49 +143,23 @@ namespace Demo_MG_MazeGame
             // only draw the player if it is active
             if (_active)
             {
-                rotation += .1F;   
-                //spriteBatch.Draw(_sprite, _position, Color.White);
-                spriteBatch.Draw(_sprite, _center, null, Color.White, rotation, new Vector2(32, 32), 1, SpriteEffects.None, 0);
-            }
-        }
-
-        /// <summary>
-        /// update death ball
-        /// </summary>
-        public void Update()
-        {
-            // death ball is moving right horizontally
-            if (_speedHorizontal != 0)
-            {
-                if (_position.X > _endingPosition.X)
+                if (_DirectionOfTravel == Direction.Right)
                 {
-                    // change directions
-                    _speedHorizontal = - _speedHorizontal;
+                    spriteBatch.Draw(_spriteRight, _position, Color.White);                    
                 }
-                else if (_position.X < _startingPosition.X)
+                else if (_DirectionOfTravel == Direction.Left)
                 {
-                    // change directions
-                    _speedHorizontal = - _speedHorizontal;
+                    spriteBatch.Draw(_spriteLeft, _position, Color.White);     
+                }
+                else if (_DirectionOfTravel == Direction.Up)
+                {
+                    spriteBatch.Draw(_spriteUp, _position, Color.White);
+                }
+                else if (_DirectionOfTravel == Direction.Down)
+                {
+                    spriteBatch.Draw(_spriteDown, _position, Color.White);
                 }
             }
-
-            // death ball is moving vertically
-            if (_speedVertical != 0)
-            {
-                if (_position.Y > _endingPosition.Y)
-                {
-                    // change directions
-                    _speedVertical = - _speedVertical;
-                }
-                else if (_position.Y < _startingPosition.Y)
-                {
-                    // change directions
-                    _speedVertical = -_speedVertical;
-                }
-            }
-
-            // update death ball position
-            Position += new Vector2(SpeedHorizontal, SpeedVertical);
         }
 
         #endregion

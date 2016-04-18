@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Documentation", "_Document
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_MG_MazeGame.D05", "Demo_MG_MazeGame.D05\Demo_MG_MazeGame.D05.csproj", "{ABF81B2F-73E4-4A28-8412-86E3F13D81E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_MG_MazeGame.D05.Starter", "Demo_MG_MazeGame.D05.Starter\Demo_MG_MazeGame.D05.Starter.csproj", "{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,16 @@ Global
 		{ABF81B2F-73E4-4A28-8412-86E3F13D81E5}.Release|Mixed Platforms.Build.0 = Release|x86
 		{ABF81B2F-73E4-4A28-8412-86E3F13D81E5}.Release|x86.ActiveCfg = Release|x86
 		{ABF81B2F-73E4-4A28-8412-86E3F13D81E5}.Release|x86.Build.0 = Release|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Debug|x86.ActiveCfg = Debug|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Debug|x86.Build.0 = Debug|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Release|Any CPU.ActiveCfg = Release|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Release|Mixed Platforms.Build.0 = Release|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Release|x86.ActiveCfg = Release|x86
+		{55DE3DED-0CDC-4A57-B2FF-34A38ED7C8DB}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
