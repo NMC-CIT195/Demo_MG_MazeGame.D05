@@ -143,11 +143,12 @@ namespace Demo_MG_MazeGame
         /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            // only draw the player if it is active
+            // only draw the death ball if active
             if (_active)
             {
-                rotation += .1F;   
-                //spriteBatch.Draw(_sprite, _position, Color.White);
+                // set rotation increment (speed)
+                rotation += .1F;
+   
                 spriteBatch.Draw(_sprite, _center, null, Color.White, rotation, new Vector2(32, 32), 1, SpriteEffects.None, 0);
             }
         }
