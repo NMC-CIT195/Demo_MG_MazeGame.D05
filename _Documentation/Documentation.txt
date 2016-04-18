@@ -14,7 +14,6 @@ Instructions:
 1) Update map matrix to include walls and jewels. Confirm.
 2) Review the DeathBall class. Note the additional fields and explore their purpose.
 3) Add a variable for the death ball object and to track lives
-4) Add death ball to map.
 5) Add the death ball to the DrawGameObjects method.
 6) Add a ManageDeathBalls method.
 7) Add the ManageDeathBalls method to the ManageGameObjects method.

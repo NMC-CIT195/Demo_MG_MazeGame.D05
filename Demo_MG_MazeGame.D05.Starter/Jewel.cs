@@ -17,7 +17,7 @@ namespace Demo_MG_MazeGame
         public enum TypeName
         {
             Green,
-            Read
+            Red
         }
 
         #endregion
